@@ -1,46 +1,30 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model IEnumerable<niu.ViewModels.EnrollmentDateGroup>
+
+@{
+    ViewBag.Title = "Student Body Statistics";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+<h2>Student Body Statistics</h2>
 
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
+<table>
+    <tr>
+        <th>
+            Enrollment Date
+        </th>
+        <th>
+            Students
+        </th>
+    </tr>
 
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
-
-<aside>
-    <h3>Telerik UI for ASP.NET MVC TreeView</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    @(Html.Kendo().TreeView()
-        .Name("LinksTreeView")
-        .Items(items =>
-        {
-            items.Add()
-                .Text("Home")
-                .Action("Index", "Home");
-            items.Add()
-                .Text("About")
-                .Action("About", "Home");
-            items.Add()
-                .Text("Contact")
-                .Action("Contact", "Home");
-        })
-    )
-
-</aside>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @item.StudentCount
+            </td>
+        </tr>
+    }
+</table>
