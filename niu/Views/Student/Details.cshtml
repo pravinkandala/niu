@@ -33,7 +33,39 @@
         <dd>
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Enrollments)
+        </dt>
+        <dd>
+            <table id="grid">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col style="width:40px" />
+                    <col style="width:50px" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Grade</th>
+                    </tr>
 
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Enrollments)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Grade)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>
     </dl>
 </div>
 <p>
