@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>@ViewBag.Title - My Telerik MVC Application</title>
+        <title>@ViewBag.Title - NIU</title>
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     	<link href="@Url.Content("~/Content/kendo/2015.3.1111/kendo.common.min.css")" rel="stylesheet" type="text/css" />
 	<link href="@Url.Content("~/Content/kendo/2015.3.1111/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
@@ -48,5 +48,6 @@
                 </div>
             </div>
         </footer>
+        @RenderSection("scripts", required: false)
     </body>
 </html>
