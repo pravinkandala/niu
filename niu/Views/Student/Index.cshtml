@@ -14,11 +14,25 @@
 @using (Html.BeginForm("Index","Student",FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        Find by name: 
+
+        @(Html.Kendo().MaskedTextBox()
+        .Name("SearchString")
+        )
+       
+        
+
+        @(Html.Kendo().Button()
+        .Name("Button")
+        .HtmlAttributes( new {type = "submit"} )
+        .Content("Search"))
+      
+        @*Find by name: @Html.Kendo().TextBox("SearchString")
+        <input type="submit" value="Search" />*@
     </p>
+    
 }
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
@@ -30,13 +44,14 @@
             @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
 
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
+           
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstMidName)
@@ -50,12 +65,19 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
-}
+}*@
+@Html.Kendo().Grid(Model).Name("item").Columns(c =>
+{
+    c.Bound(p => p.LastName);
+    c.Bound(p => p.FirstMidName);
+    c.Bound(p => p.EnrollmentDate);
+}).Sortable().Pageable()
+@*</table>*@
 
-</table>
 
-<br />
+
+@*<br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
