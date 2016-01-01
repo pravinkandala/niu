@@ -9,7 +9,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="table">
+
+@Html.Kendo().Grid(Model).Name("item").Columns(c =>
+{
+    c.Bound(p => p.CourseID);
+    c.Bound(p => p.Title);
+    c.Bound(p => p.Credits);
+}).Sortable().Pageable()
+@*<table id="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CourseID)
@@ -44,4 +51,4 @@
     </tr>
 }
 
-</table>
+</table>*@
