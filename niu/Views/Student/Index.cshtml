@@ -9,7 +9,12 @@
 <h2>Student</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+    @(Html.Kendo().Button()
+        .Name("Create")
+        .HtmlAttributes(new { type = "button" })
+        .Events(ev => ev.Click("Create"))
+        .Content("Create New"))
 </p>
 @using (Html.BeginForm("Index","Student",FormMethod.Get))
 {
