@@ -15,13 +15,23 @@
 	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
     <body>
-        <header>
+         <header>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">@Html.ActionLink("NIU", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
                     <nav>
+                        @*@(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items => 
+                        {
+                        items.Add().Text("Home").Events(ev => ev.Click("Home"));
+                        items.Add().Text("Student");
+                        items.Add().Text("About");
+                        items.Add().Text("Course");
+                        }))*@
+
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Statistics", "About", "Home")</li>
@@ -39,8 +49,8 @@
             </section>
         </div>
 
-        <footer>
-            <div class="content-wrapper">
+        <footer style="position: fixed; bottom: 0px; width: 100%; height: 60px;">
+            <div>
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - pK</p>
                 </div>

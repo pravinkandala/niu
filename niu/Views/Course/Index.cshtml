@@ -15,6 +15,11 @@
     c.Bound(p => p.CourseID);
     c.Bound(p => p.Title);
     c.Bound(p => p.Credits);
+    c.Template(@<text>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID, })
+        @Html.ActionLink("Details", "Details", new { id = item.CourseID })
+        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+    </text>);
 }).Sortable().Pageable()
 @*<table id="table">
     <tr>

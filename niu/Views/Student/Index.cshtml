@@ -9,12 +9,12 @@
 <h2>Student</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    @(Html.Kendo().Button()
+    @Html.ActionLink("Create New", "Create")
+    @*@(Html.Kendo().Button()
         .Name("Create")
         .HtmlAttributes(new { type = "button" })
         .Events(ev => ev.Click("Create"))
-        .Content("Create New"))
+        .Content("Create New"))*@
 </p>
 @using (Html.BeginForm("Index","Student",FormMethod.Get))
 {
@@ -53,29 +53,37 @@
 
 
 @*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-           
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstMidName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnrollmentDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}*@
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+        columns.Template(@<text> @Html.ActionLink("Edit",
+     "Product", new { id = item.Id, @style = "text-transform:capitalize;" }) </text>).ClientTemplate("<a href='/Products/Product/Edit/#= Id#'>View/Edit</a>").Width(100);
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }*@
 @Html.Kendo().Grid(Model).Name("item").Columns(c =>
 {
     c.Bound(p => p.LastName);
     c.Bound(p => p.FirstMidName);
     c.Bound(p => p.EnrollmentDate);
+    c.Template(@<text>
+    @Html.ActionLink("Edit", "Edit", new { id = item.ID, }) 
+@Html.ActionLink("Details", "Details", new { id = item.ID })
+@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+</text>);
+
 }).Sortable().Pageable()
 @*</table>*@
 
